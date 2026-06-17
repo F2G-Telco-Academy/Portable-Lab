@@ -2,5 +2,5 @@ import { cn } from '../../lib/utils'
 import { type HTMLAttributes } from 'react'
 
 export default function Container({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('max-w-7xl mx-auto px-4 sm:px-6 lg:px-8', className)} {...props} />
+  return <div className={cn('mx-auto max-w-[1100px] px-5', className)} {...props} />
 }

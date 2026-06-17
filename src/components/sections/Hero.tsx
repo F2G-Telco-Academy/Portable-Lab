@@ -1,120 +1,110 @@
-import { motion } from 'framer-motion'
-import { PlayCircle, ArrowDown } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
+import VideoModal from '../ui/VideoModal'
 
-const stats = [
-  { value: '85 Mbps', label: 'Peak Throughput' },
-  { value: '2×2 MIMO', label: 'Antenna Config' },
-  { value: 'Full IMS', label: 'VoLTE Stack' },
+const showcaseImages = [
+  { src: '/photo1_overall_setup.png', alt: 'F2G Portable Lab — Full setup with BladeRF, amplifiers and mini-PC' },
+  { src: '/photo2_bladerf_closeup.png', alt: 'BladeRF 2.0 micro SDR with BT-100/BT-200 bias-tee amplifiers' },
+  { src: '/photo11_phone_lte.png', alt: 'Smartphone connected to the private LTE network' },
+  { src: '/room.jpeg', alt: 'F2G Telecom Lab workspace' },
 ]
 
 export default function Hero() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  useEffect(() => {
+    if (!isPaused && showcaseImages.length > 1) {
+      intervalRef.current = setInterval(() => setCurrentIndex((prev) => (prev + 1) % showcaseImages.length), 3000)
+    }
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [isPaused, currentIndex])
+
+  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % showcaseImages.length)
+  const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + showcaseImages.length) % showcaseImages.length)
+
   return (
-    <section className="pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+    <section className="pt-28 pb-12 md:pb-16">
       <Container>
         <div className="reveal max-w-[900px] mx-auto text-center space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              By F2G Telco Academy
-            </span>
-          </motion.div>
+          <h1 className="heading-xl">
+            Portable End-to-End Software Defined 4G Network
+          </h1>
 
-          <motion.h1
-            className="heading-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Portable End-to-End{' '}
-            <span className="text-primary">Software Defined</span>{' '}
-            4G Network
-          </motion.h1>
-
-          <motion.p
-            className="text-body max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            A complete LTE laboratory in a portable box. Deploy SMS, IMS/VoLTE, USSD services 
-            with 2×2 MIMO and up to 85 Mbps throughput — ready for research, teaching, and 
+          <p className="text-body dark:text-gray-300 max-w-2xl mx-auto">
+            A complete LTE laboratory in a portable box. Deploy VoLTE, SMS, USSD and eSIM services
+            with srsRAN 4G and BladeRF SDR — ready for research, teaching, and
             telecom development anywhere.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-wrap gap-3 justify-center pt-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Button size="lg" className="gap-2">
+          <div className="flex flex-wrap gap-3 justify-center pt-2">
+            <Button size="lg" onClick={() => setIsVideoOpen(true)} className="gap-2">
               <PlayCircle className="w-4 h-4" />
               Watch Demo
             </Button>
             <Button size="lg" variant="outline" onClick={() => window.location.href = '#features'}>
               Learn More
-              <ArrowDown className="w-4 h-4 ml-1" />
             </Button>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Product Showcase */}
-        <motion.div
-          className="reveal mt-16 max-w-4xl mx-auto"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <div
+          className="reveal mt-16 group"
+          style={{ perspective: '2000px' }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-8 md:p-12">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Device placeholder */}
-              <div className="flex-1 flex items-center justify-center">
-                <div className="w-64 h-48 rounded-xl bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <img src="/f2g_logo.png" alt="F2G Device" className="w-10 h-10" />
-                    </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">F2G Portable Lab</p>
+          <div
+            className="rounded-2xl overflow-hidden border border-card-border dark:border-gray-700 shadow-2xl relative bg-white dark:bg-gray-900"
+            style={{ transform: 'rotateX(4deg)', transformOrigin: 'center bottom' }}
+          >
+            <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+              <div
+                className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {showcaseImages.map((image, idx) => (
+                  <div key={idx} className="w-full h-full flex-shrink-0 relative">
+                    <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-contain" />
                   </div>
-                </div>
-              </div>
-              {/* Phone mockup */}
-              <div className="flex-shrink-0">
-                <div className="w-44 h-80 rounded-[2rem] border-4 border-gray-800 dark:border-gray-600 bg-white dark:bg-gray-900 shadow-xl overflow-hidden relative">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-800 dark:bg-gray-600 rounded-b-xl" />
-                  <div className="pt-8 px-3 space-y-2">
-                    <div className="h-3 bg-primary/20 rounded w-3/4" />
-                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-full" />
-                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
-                    <div className="mt-4 h-24 bg-primary/5 rounded-lg border border-primary/20" />
-                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-          </div>
-        </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          className="reveal flex flex-wrap justify-center gap-8 md:gap-16 mt-14"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl font-bold text-primary">{stat.value}</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+            {showcaseImages.length > 1 && (
+              <>
+                <button onClick={goToPrev} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-card-border dark:border-gray-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-label="Previous image">
+                  <ChevronLeft className="w-5 h-5 text-primary dark:text-gray-100" />
+                </button>
+                <button onClick={goToNext} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-card-border dark:border-gray-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-label="Next image">
+                  <ChevronRight className="w-5 h-5 text-primary dark:text-gray-100" />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="reveal flex justify-center gap-12 mt-14">
+          <div className="text-center">
+            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">85 Mbps</div>
+            <div className="text-xs text-muted dark:text-gray-400 mt-1">Peak Throughput</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">Full IMS</div>
+            <div className="text-xs text-muted dark:text-gray-400 mt-1">VoLTE / SMS / USSD</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">eSIM</div>
+            <div className="text-xs text-muted dark:text-gray-400 mt-1">OTA Provisioning</div>
+          </div>
+        </div>
       </Container>
+
+      <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </section>
   )
 }

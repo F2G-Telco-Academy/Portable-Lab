@@ -1,14 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: '#F5A623',
-        'primary-dark': '#D4891A',
-        secondary: '#1A1A2E',
-        accent: '#16213E',
+        primary: '#1E1E1E',
+        muted: '#818293',
+        accent: '#698D9C',
+        dark: '#0F0F11',
+        'card-border': '#E5E5E5',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

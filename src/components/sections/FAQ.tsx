@@ -4,39 +4,43 @@ import Container from '../ui/Container'
 import { cn } from '../../lib/utils'
 
 const faqs = [
-  { q: 'What frequency bands are supported?', a: 'Band 3 (1800 MHz), Band 7 (2600 MHz), and Band 20 (800 MHz). The default configuration uses Band 3 with EARFCN 1450.' },
-  { q: 'How many UEs can connect simultaneously?', a: 'The system supports up to 10 concurrent UE connections with full IMS services (VoLTE, SMS, USSD).' },
-  { q: 'Do I need a license to operate?', a: 'The lab operates at very low power (indoor range). For outdoor/higher power use, consult your local spectrum regulator.' },
-  { q: 'Can I provision eSIM devices?', a: 'Yes. The system integrates with Simlessly (GSMA-certified SM-DP+) for remote SIM provisioning on commercial phones.' },
-  { q: 'What is the coverage range?', a: 'With BT-100/BT-200 amplifiers: ~50m indoors, ~200m line-of-sight outdoors. Without amplifiers: ~10-15m.' },
-  { q: 'Who built this?', a: 'Product owners: Djoum Arnaud and Kamga Arnold, at F2G Telco Academy / PKF Telecommunication Academy, Cameroon.' },
+  { question: 'What frequency band is used?', answer: 'Band 3 (1800 MHz) with EARFCN 1450 (DL 1830 MHz). The system uses srsRAN 4G with a BladeRF 2.0 micro SDR.' },
+  { question: 'What antenna configuration is supported?', answer: 'SISO (single antenna TX/RX). The BladeRF driver in srsRAN 4G does not currently support MIMO 2x2. BT-100 (PA) and BT-200 (LNA) bias-tee amplifiers extend range.' },
+  { question: 'Can I provision eSIM devices?', answer: 'Yes. Profiles are created with pySim, uploaded to Simlessly (GSMA-certified SM-DP+), and downloaded to commercial phones via QR code. VoLTE works on provisioned eSIMs.' },
+  { question: 'What services are available?', answer: 'Full VoLTE calls (Kamailio IMS + Asterisk), SMS (SMSC), USSD interactive services, and standard LTE data connectivity.' },
+  { question: 'What is the network architecture?', answer: '15 Docker containers: Open5GS EPC (MME, SGW, UPF, HSS, PCRF), Kamailio IMS (P/I/S-CSCF), PyHSS, Asterisk, RTPengine, SMSC, OsmoHLR, MongoDB.' },
+  { question: 'Who built this?', answer: 'F2G-SOLUTIONS — a telecom R&D lab based in Cameroon focused on practical telecom education and development.' },
 ]
 
-export default function FAQ() {
-  const [open, setOpen] = useState<number | null>(null)
-
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
   return (
-    <section id="faq" className="py-20 bg-gray-50 dark:bg-accent">
-      <Container>
-        <div className="reveal text-center max-w-2xl mx-auto mb-14">
-          <h2 className="heading-lg">Frequently Asked Questions</h2>
-        </div>
+    <div className="border-b border-card-border dark:border-gray-700">
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full py-5 px-1 text-left flex items-center justify-between gap-4">
+        <span className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-[-0.03em]">{question}</span>
+        <ChevronDown className={cn('w-4 h-4 text-muted dark:text-gray-400 flex-shrink-0 transition-transform duration-300', isOpen && 'rotate-180')} />
+      </button>
+      <div className={cn('overflow-hidden transition-all duration-300', isOpen ? 'max-h-60 pb-5' : 'max-h-0')}>
+        <p className="text-xs text-muted dark:text-gray-400 leading-relaxed px-1">{answer}</p>
+      </div>
+    </div>
+  )
+}
 
-        <div className="reveal max-w-2xl mx-auto space-y-3">
-          {faqs.map((faq, i) => (
-            <div key={i} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-secondary overflow-hidden">
-              <button
-                className="w-full flex items-center justify-between p-4 text-left font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-                onClick={() => setOpen(open === i ? null : i)}
-              >
-                {faq.q}
-                <ChevronDown className={cn('w-4 h-4 text-gray-400 transition-transform', open === i && 'rotate-180')} />
-              </button>
-              {open === i && (
-                <div className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">{faq.a}</div>
-              )}
-            </div>
-          ))}
+export default function FAQ() {
+  return (
+    <section id="faq" className="py-12 md:py-16">
+      <Container>
+        <div className="max-w-3xl mx-auto">
+          <div className="reveal text-center mb-8 md:mb-10 space-y-4">
+            <p className="section-label">FAQ</p>
+            <h2 className="heading-lg dark:text-gray-100">Frequently Asked Questions</h2>
+          </div>
+          <div className="reveal">
+            {faqs.map((faq, idx) => (
+              <FAQItem key={idx} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
         </div>
       </Container>
     </section>
