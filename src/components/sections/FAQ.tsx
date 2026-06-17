@@ -7,7 +7,7 @@ const faqs = [
   { question: 'What frequency band is used?', answer: 'Band 3 (1800 MHz) with EARFCN 1450 (DL 1830 MHz). The system uses srsRAN 4G with a BladeRF 2.0 micro SDR.' },
   { question: 'What antenna configuration is supported?', answer: 'SISO (single antenna TX/RX). The BladeRF driver in srsRAN 4G does not currently support MIMO 2x2. BT-100 (PA) and BT-200 (LNA) bias-tee amplifiers extend range.' },
   { question: 'Can I provision eSIM devices?', answer: 'Yes. Profiles are created with pySim, uploaded to Simlessly (GSMA-certified SM-DP+), and downloaded to commercial phones via QR code. VoLTE works on provisioned eSIMs.' },
-  { question: 'What services are available?', answer: 'Full VoLTE calls (Kamailio IMS + Asterisk), SMS (SMSC), USSD interactive services, and standard LTE data connectivity.' },
+  { question: 'What services are available?', answer: 'Full VoLTE calls (Kamailio IMS + Asterisk), SMS (SMSC), and standard LTE data connectivity.' },
   { question: 'What is the network architecture?', answer: '15 Docker containers: Open5GS EPC (MME, SGW, UPF, HSS, PCRF), Kamailio IMS (P/I/S-CSCF), PyHSS, Asterisk, RTPengine, SMSC, OsmoHLR, MongoDB.' },
   { question: 'Who built this?', answer: 'F2G-SOLUTIONS — a telecom R&D lab based in Cameroon focused on practical telecom education and development.' },
 ]

@@ -4,7 +4,7 @@ import Container from '../ui/Container'
 const features = [
   { icon: Radio, title: 'Full LTE Network', description: 'Complete EPC with Open5GS — MME, SGW, PGW, HSS, PCRF in Docker containers.' },
   { icon: Phone, title: 'VoLTE / IMS', description: 'Kamailio-based IMS (P/I/S-CSCF) with Asterisk media server and RTPengine.' },
-  { icon: MessageSquare, title: 'SMS & USSD', description: 'Native SMS center and USSD gateway for interactive mobile services.' },
+  { icon: MessageSquare, title: 'SMS', description: 'Native SMS center for mobile messaging services.' },
   { icon: Wifi, title: 'BladeRF 2.0 micro', description: 'SDR with bias-tee amplifiers (BT-100 PA + BT-200 LNA) for extended range.' },
   { icon: Shield, title: 'eSIM Ready', description: 'Remote SIM provisioning via Simlessly (GSMA-certified SM-DP+) — provision subscribers over-the-air.' },
   { icon: Cpu, title: 'srsRAN 4G', description: 'Production-grade eNodeB software on Band 3 (1800 MHz). Supports all LTE bandwidths from 1.4 to 20 MHz.' },

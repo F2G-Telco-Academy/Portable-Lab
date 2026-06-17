@@ -5,7 +5,7 @@ const steps = [
   { number: '01', icon: Package, title: 'Unbox & Power On', description: 'Connect the BladeRF SDR, plug in antennas, and boot the mini-PC. All services start automatically.' },
   { number: '02', icon: Settings, title: 'Provision Subscribers', description: 'Add SIM/eSIM profiles via the web interface. Configure IMSI, Ki, OPC for each subscriber.' },
   { number: '03', icon: Play, title: 'Start the Network', description: 'Launch the eNodeB. The full LTE core (EPC + IMS) is already running in Docker containers.' },
-  { number: '04', icon: Wifi, title: 'Connect & Test', description: 'Attach UEs to the network. Make VoLTE calls, send SMS, test USSD services, and measure throughput.' },
+  { number: '04', icon: Wifi, title: 'Connect & Test', description: 'Attach UEs to the network. Make VoLTE calls, send SMS, and measure throughput.' },
 ]
 
 export default function HowItWorks() {

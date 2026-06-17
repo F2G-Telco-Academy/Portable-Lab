@@ -3,9 +3,9 @@ import Container from '../ui/Container'
 
 const useCases = [
   { icon: GraduationCap, title: 'Telecom Training', description: 'Hands-on LTE/IMS education for students and professionals.', features: ['Live protocol observation', 'Call flow visualization', 'Network parameter tuning', 'Real UE attachment'] },
-  { icon: Building2, title: 'R&D Labs', description: 'Prototype and test telecom features without commercial infrastructure.', features: ['VoLTE call testing', 'USSD service development', 'eSIM provisioning R&D', 'Custom EPC configurations'] },
+  { icon: Building2, title: 'R&D Labs', description: 'Prototype and test telecom features without commercial infrastructure.', features: ['VoLTE call testing', 'SMS service development', 'eSIM provisioning R&D', 'Custom EPC configurations'] },
   { icon: Radio, title: 'Field Testing', description: 'Portable deployment for coverage testing and demonstrations.', features: ['Battery-powered operation', 'Amplified RF output', 'Multi-band support', 'GPS-tagged measurements'] },
-  { icon: Wrench, title: 'Device Certification', description: 'Test UE behavior against a controlled network environment.', features: ['Attach/detach scenarios', 'Handover simulation', 'VoLTE interop testing', 'SMS/USSD validation'] },
+  { icon: Wrench, title: 'Device Certification', description: 'Test UE behavior against a controlled network environment.', features: ['Attach/detach scenarios', 'Handover simulation', 'VoLTE interop testing', 'SMS validation'] },
 ]
 
 export default function UseCases() {

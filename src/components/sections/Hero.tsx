@@ -61,7 +61,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-body dark:text-gray-300 max-w-2xl mx-auto">
-            A complete LTE laboratory in a portable box. Deploy VoLTE, SMS, USSD and eSIM services
+            A complete LTE laboratory in a portable box. Deploy VoLTE, SMS and eSIM services
             with srsRAN 4G and BladeRF SDR — ready for research, teaching, and
             telecom development anywhere.
           </p>
@@ -121,7 +121,7 @@ export default function Hero() {
           </div>
           <div className="text-center">
             <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">Full IMS</div>
-            <div className="text-xs text-muted dark:text-gray-400 mt-1">VoLTE / SMS / USSD</div>
+            <div className="text-xs text-muted dark:text-gray-400 mt-1">VoLTE / SMS</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">eSIM</div>
