@@ -9,7 +9,6 @@ const showcaseImages = [
   { src: '/portable-lab-box.jpeg', alt: 'F2G Portable Lab box with iPhone connected to F2Gsol LTE network', mockup: 'none' as MockupType },
   { src: '/phone-lte.jpeg', alt: 'iPhone connected to K48 Telecommunications private LTE network', mockup: 'phone' as MockupType },
   { src: '/setup-overview.jpeg', alt: 'F2G Portable Lab — Full setup with BladeRF, amplifiers and mini-PC', mockup: 'phone' as MockupType },
-  { src: '/photo2_bladerf_closeup.png', alt: 'BladeRF 2.0 micro SDR with BT-100/BT-200 bias-tee amplifiers', mockup: 'laptop' as MockupType },
 ]
 
 function LaptopMockup({ src, alt }: { src: string; alt: string }) {
