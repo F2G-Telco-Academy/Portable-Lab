@@ -2,7 +2,7 @@
 
 This project is a promotional landing page for the F2G Portable Lab, a portable end-to-end software defined 4G network used for telecom research, training, testing, and demonstrations.
 
-The page highlights the lab's main capabilities, including LTE core network services, VoLTE/IMS, SMS, eSIM provisioning, hardware details, use cases, FAQs, and contact actions. It is built as a single-page React application with a fixed navigation bar, animated section reveals, a rotating hero showcase, and a demo modal.
+The page highlights the lab's main capabilities, including LTE core network services, VoLTE/IMS, SMS, eSIM provisioning, hardware details, use cases, FAQs, and contact actions. It is built as a single-page React application with a fixed navigation bar, animated section reveals, and a rotating hero showcase.
 
 ## Tech Stack
 
@@ -64,7 +64,7 @@ http://localhost:5173
 - A step-by-step "How It Works" section.
 - Telecom use cases for training, R&D, field testing, and certification.
 - An FAQ section with technical answers.
-- A contact section with a demo video modal and company links.
+- A contact section with company links and a contact CTA.
 
 ## Project Structure
 
@@ -77,5 +77,5 @@ http://localhost:5173
 
 ## Notes
 
-- The demo modal expects a `public/demo.mp4` file if you want the video button to play a local demo.
+- A demo video can be added later by restoring the contact CTA and providing a `public/demo.mp4` file.
 - The app also uses the F2G logo and product images from the `public/` folder.
