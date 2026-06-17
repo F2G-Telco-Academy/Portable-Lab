@@ -3,10 +3,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
 
-type MockupType = 'laptop' | 'phone' | 'box-phone' | 'none'
+type MockupType = 'laptop' | 'phone' | 'none'
 
 const showcaseImages = [
-  { src: '/portable-lab-box.jpeg', alt: 'F2G Portable Lab box with iPhone connected to F2Gsol LTE network', mockup: 'box-phone' as MockupType },
+  { src: '/portable-lab-box.jpeg', alt: 'F2G Portable Lab box with iPhone connected to F2Gsol LTE network', mockup: 'none' as MockupType },
   { src: '/IMG_0014.PNG', alt: 'Smartphone connected to the private LTE network', mockup: 'phone' as MockupType },
   { src: '/photo1_overall_setup.png', alt: 'F2G Portable Lab — Full setup with BladeRF, amplifiers and mini-PC', mockup: 'laptop' as MockupType },
   { src: '/photo2_bladerf_closeup.png', alt: 'BladeRF 2.0 micro SDR with BT-100/BT-200 bias-tee amplifiers', mockup: 'laptop' as MockupType },
@@ -35,14 +35,7 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
   )
 }
 
-function BoxPhoneMockup({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="relative w-full h-full">
-      <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-contain" />
-      <img src="/IMG_0014.PNG" alt="iPhone showing K48 Telecommunications LTE connection" className="absolute object-cover rounded-[12px]" style={{ bottom: '2%', left: '2%', width: '22%', height: '85%' }} />
-    </div>
-  )
-}
+
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -95,7 +88,6 @@ export default function Hero() {
                   <div key={idx} className="w-full h-full flex-shrink-0 relative">
                     {image.mockup === 'laptop' && <LaptopMockup src={image.src} alt={image.alt} />}
                     {image.mockup === 'phone' && <PhoneMockup src={image.src} alt={image.alt} />}
-                    {image.mockup === 'box-phone' && <BoxPhoneMockup src={image.src} alt={image.alt} />}
                     {image.mockup === 'none' && <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-contain" />}
                   </div>
                 ))}
