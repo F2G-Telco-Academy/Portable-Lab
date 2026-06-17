@@ -26,7 +26,7 @@ function LaptopMockup({ src, alt }: { src: string; alt: string }) {
 function PhoneMockup({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex items-center justify-center w-full h-full p-6 md:p-10">
-      <div className="relative h-[70%] aspect-[9/18] bg-black rounded-[40px] p-[7px] shadow-2xl border-[2px] border-gray-700">
+      <div className="relative h-[85%] aspect-[9/18] bg-black rounded-[40px] p-[7px] shadow-2xl border-[2px] border-gray-700">
         <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-[80px] h-[22px] bg-black rounded-full z-10" />
         <div className="w-full h-full rounded-[33px] overflow-hidden bg-white">
           <img src={src} alt={alt} className="w-full h-full object-fill" />
