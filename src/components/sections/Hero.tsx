@@ -30,7 +30,7 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
       <div className="relative h-[90%] aspect-[9/19.5] bg-black rounded-[40px] p-[6px] shadow-2xl border-[3px] border-gray-800">
         <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[80px] h-[22px] bg-black rounded-full z-10" />
         <div className="w-full h-full rounded-[34px] overflow-hidden bg-white">
-          <img src={src} alt={alt} className="w-full h-full object-contain" />
+          <img src={src} alt={alt} className="w-full h-full object-cover object-top" />
         </div>
       </div>
     </div>
