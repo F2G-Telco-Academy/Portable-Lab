@@ -17,7 +17,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
     <div className="border-b border-card-border dark:border-gray-700">
       <button onClick={() => setIsOpen(!isOpen)} className="w-full py-5 px-1 text-left flex items-center justify-between gap-4">
-        <span className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-[-0.03em]">{question}</span>
+        <span className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-heading-sm">{question}</span>
         <ChevronDown className={cn('w-4 h-4 text-muted dark:text-gray-400 flex-shrink-0 transition-transform duration-300', isOpen && 'rotate-180')} />
       </button>
       <div className={cn('overflow-hidden transition-all duration-300', isOpen ? 'max-h-60 pb-5' : 'max-h-0')}>

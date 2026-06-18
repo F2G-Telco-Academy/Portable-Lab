@@ -28,7 +28,7 @@ export default function HowItWorks() {
                 <step.icon className="w-5 h-5 text-primary/20 dark:text-gray-600" />
               </div>
               <div>
-                <h3 className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-[-0.03em]">{step.title}</h3>
+                <h3 className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-heading-sm">{step.title}</h3>
                 <p className="text-xs text-muted dark:text-gray-400 mt-2 leading-relaxed">{step.description}</p>
               </div>
             </div>

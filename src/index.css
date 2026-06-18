@@ -10,12 +10,10 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: #1E1E1E;
+  @apply text-primary dark:text-gray-100;
   background: linear-gradient(180deg, #F8F8F6 0%, #F2F1EF 40%, #EEECEA 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,40 +21,32 @@ body {
 }
 
 body.dark {
-  color: #f3f4f6;
   background: linear-gradient(180deg, #0F0F11 0%, #1A1A1C 40%, #1E1E20 100%);
 }
 
+/* Section label style */
 .section-label {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-xs font-semibold uppercase tracking-[0.08em];
-  color: #698D9C;
+  @apply text-xs font-medium uppercase tracking-label text-accent;
 }
 
 .text-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-base font-normal leading-relaxed;
-  color: #818293;
+  @apply text-base font-normal text-muted leading-relaxed;
 }
 
 .heading-xl {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-5xl md:text-6xl lg:text-[78px] font-semibold leading-[1] tracking-[-0.04em];
+  @apply text-5xl md:text-6xl lg:text-[78px] font-normal leading-[1] tracking-heading-xl text-primary dark:text-gray-100;
 }
 
 .heading-lg {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-3xl md:text-[32px] font-semibold leading-[1.2] tracking-[-0.03em];
+  @apply text-3xl md:text-[32px] font-medium leading-[1.2] tracking-heading-lg text-primary dark:text-gray-100;
 }
 
 .heading-md {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-2xl md:text-[28px] font-semibold leading-[1.2] tracking-[-0.03em];
+  @apply text-2xl md:text-[28px] font-medium leading-[1.2] tracking-heading-md text-primary dark:text-gray-100;
 }
 
 .heading-sm {
-  font-family: 'Inter', system-ui, sans-serif;
-  @apply text-lg font-medium leading-[1.2] tracking-[-0.02em];
+  @apply text-lg font-medium leading-[1.2] tracking-heading-sm text-primary dark:text-gray-100;
 }
 
 /* Scroll reveal animations */
@@ -71,6 +61,7 @@ body.dark {
   transform: translateY(0);
 }
 
+/* Staggered children */
 .reveal-children > * {
   opacity: 0;
   transform: translateY(20px);
@@ -97,6 +88,6 @@ body.dark {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
 ::-webkit-scrollbar-thumb { @apply bg-gray-300 rounded-full; }
 ::-webkit-scrollbar-thumb:hover { @apply bg-gray-400; }

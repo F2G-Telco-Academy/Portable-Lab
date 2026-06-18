@@ -28,7 +28,7 @@ export default function UseCases() {
                   <useCase.icon className="w-5 h-5 text-accent dark:text-[#8BADB9]" />
                 </div>
                 <div>
-                  <h3 className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-[-0.03em]">{useCase.title}</h3>
+                  <h3 className="text-[15px] font-medium text-primary dark:text-gray-100 tracking-heading-sm">{useCase.title}</h3>
                   <p className="text-xs text-muted dark:text-gray-400 mt-1">{useCase.description}</p>
                 </div>
               </div>

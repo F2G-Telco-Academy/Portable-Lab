@@ -75,7 +75,7 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                'text-sm tracking-[0.02em] transition-colors',
+                'text-sm tracking-nav transition-colors',
                 activeSection === item.href
                   ? 'text-primary dark:text-white font-semibold'
                   : 'text-primary/70 dark:text-gray-300 hover:text-primary dark:hover:text-white'

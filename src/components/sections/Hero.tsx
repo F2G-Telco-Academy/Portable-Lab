@@ -131,15 +131,15 @@ export default function Hero() {
 
         <div className="reveal flex justify-center gap-12 mt-14">
           <div className="text-center">
-            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">85 Mbps</div>
+            <div className="text-2xl font-medium tracking-heading-lg text-primary dark:text-gray-100">85 Mbps</div>
             <div className="text-xs text-muted dark:text-gray-400 mt-1">Peak Throughput</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">Full IMS</div>
+            <div className="text-2xl font-medium tracking-heading-lg text-primary dark:text-gray-100">Full IMS</div>
             <div className="text-xs text-muted dark:text-gray-400 mt-1">VoLTE / SMS</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-medium tracking-[-0.05em] text-primary dark:text-gray-100">eSIM</div>
+            <div className="text-2xl font-medium tracking-heading-lg text-primary dark:text-gray-100">eSIM</div>
             <div className="text-xs text-muted dark:text-gray-400 mt-1">OTA Provisioning</div>
           </div>
         </div>
